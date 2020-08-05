@@ -133,3 +133,30 @@ exports.updateEmployee = (req,res) => {
             return res.json(employeeData);
         })
 }
+
+
+exports.getAllemployee = (req,res) => {
+    let dbRef = firebase.database().ref('employees');
+    
+    var temp;
+    dbRef.on("value", snapshot => {
+        temp = snapshot.val()
+        //console.log(temp)
+        return res.json(temp)
+    })
+    //console.log(temp)
+}
+
+exports.getEmployeeById = (req,res,next,id) => {
+    req.empid = id;
+    next();
+}
+
+exports.getEmployee = (req,res) => {
+    const { empid } = req;
+    const dbRef = firebase.database().ref('employees').child(empid);
+
+    dbRef.on('value', snapshot => {
+        return res.json(snapshot.val())
+    })
+}
