@@ -69,7 +69,7 @@ exports.isSignedIn = (req,res, next) => {
     }
     else{
         //if !user then send error of not signedin
-        res.status(400).json({
+        return res.status(400).json({
             error: "Not signed in"
         })
     }
