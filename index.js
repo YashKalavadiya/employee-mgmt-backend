@@ -3,6 +3,7 @@ const express = require('express');
 //creates an express application
 const app = express();
 
+const serverless = require('serverless-http');
 
 //importing firebase
 const firebase = require('firebase')
@@ -45,8 +46,14 @@ app.use("/auth", authRoutes);
 app.use("/employees", employeeRoutes);
 
 
-//listening at port 2000 or if port is defined in .env file
-const port = 2000 || process.env.PORT
-app.listen(port, () => {
-    console.log(`App is listening at port ${port}`);
-})
+
+module.exports = app;
+
+module.exports.handler = serverless(app);
+
+
+// //listening at port 2000 or if port is defined in .env file
+// const port = 2000 || process.env.PORT
+// app.listen(port, () => {
+//     console.log(`App is listening at port ${port}`);
+// })

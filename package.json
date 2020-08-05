@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "author": "Yash Kalavadiya",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "firebase": "^7.17.1",
     "formidable": "^1.2.2",
     "nodemon": "^2.0.4",
+    "serverless-http": "^2.5.0",
     "uuid": "^8.3.0"
   }
 }
