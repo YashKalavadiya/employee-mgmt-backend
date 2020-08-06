@@ -36,7 +36,7 @@ const employeeRoutes = require('./routes/employee')
 app.use(bodyparser.json());
 
 //using CORS to enable cross-domain request
-app.use(cors());
+//app.use(cors());
 
 //adding a middleware to solve problem of cross origin and make api public
 app.all('/', function(req, res, next) {
