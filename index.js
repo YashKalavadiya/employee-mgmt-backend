@@ -38,6 +38,26 @@ app.use(bodyparser.json());
 //using CORS to enable cross-domain request
 app.use(cors());
 
+//adding a middleware to solve problem of cross origin and make api public
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  // res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
+
 //using authRouter which will be accesed by /auth/__route_in_auth.js__
 app.use("/auth", authRoutes);
 
