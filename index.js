@@ -38,13 +38,13 @@ app.use(bodyparser.json());
 //using CORS to enable cross-domain request
 app.use(cors());
 
-//adding a middleware to solve problem of cross origin and make api public
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  next()
-});
+// //adding a middleware to solve problem of cross origin and make api public
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+//   next()
+// });
 
 //using authRouter which will be accesed by /auth/__route_in_auth.js__
 app.use("/auth", authRoutes);
