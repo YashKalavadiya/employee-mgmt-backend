@@ -16,21 +16,10 @@ exports.uploadEmployee =  (req,res) => {
 
 
     //creating instance of incoming form to get all values which were passed by user in front end
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
     
-
-    //parsing values to get fields of form
-
-    form.parse(req, async (err, fields) => {
-        if(err){
-            return res.status(400).json({
-                error: err
-            })
-        }
         
         //destructuring values present in fields of form
-        const { fname, lname, email, age, gender, designation, experience, imageUrl, imageName } = fields;
+        const { fname, lname, email, age, gender, designation, experience, imageUrl, imageName } = req.body;
 
         //checking wether all values are available or not
         // if( !fname || !lname || !email || !age || !gender || !designation ) {
@@ -44,15 +33,15 @@ exports.uploadEmployee =  (req,res) => {
 
         //creating object which will be saved in database
         const employeeData = {
-            fname,
-            lname, 
-            email,
-            age,
-            gender,
-            designation,
-            experience,
-            imageUrl,
-            imageName
+            fname: fname,
+            lname: lname, 
+            email: email,
+            age: age,
+            gender: gender,
+            designation: designation,
+            experience: experience,
+            imageUrl: imageUrl,
+            imageName: imageName
         }
 
         //pushing above created object at reference of database
@@ -68,7 +57,6 @@ exports.uploadEmployee =  (req,res) => {
             return res.json(employeeData);
         })
     
-    })
 }
 
 exports.deleteEmployee = async (req,res) => {
