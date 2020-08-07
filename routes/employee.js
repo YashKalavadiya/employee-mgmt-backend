@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.param("empId", getEmployeeById);
 
-router.post("/addemployee", uploadEmployee );
+router.post("/addemployee", isSignedIn, uploadEmployee );
 
 router.post("/deleteemp", isSignedIn, deleteEmployee);
 
