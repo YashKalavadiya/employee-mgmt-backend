@@ -33,11 +33,11 @@ exports.uploadEmployee =  (req,res) => {
         const { fname, lname, email, age, gender, designation, experience, imageUrl, imageName } = fields;
 
         //checking wether all values are available or not
-        if( !fname || !lname || !email || !age || !gender || !designation ) {
-            return res.status(400).json({
-                error: 'Please include all fields'
-            })
-        } 
+        // if( !fname || !lname || !email || !age || !gender || !designation ) {
+        //     return res.status(400).json({
+        //         error: 'Please include all fields'
+        //     })
+        // } 
 
         //creating referance to firebase database
         const dbRef = firebase.database().ref('employees')
